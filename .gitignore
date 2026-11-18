@@ -4,3 +4,4 @@ out/
 unused-photos/
 .env*
 .vs/
+.wrangler/
