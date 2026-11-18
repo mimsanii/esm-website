@@ -1,0 +1,25 @@
+# Ecotop Silent Media — settings for cPanel / Apache hosting
+
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# Force HTTPS. Turn on (remove the # signs) AFTER the SSL certificate is active in cPanel.
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
+# Compress text files so pages load faster
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/json image/svg+xml
+</IfModule>
+
+# Let browsers keep images and code (they have unique names), re-check pages each visit
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
