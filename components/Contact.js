@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { site, waLink, activeSocials } from '@/lib/site';
 import { WhatsApp, Pin, Calendar, ArrowRight } from './Icons';
+import MobileBook from './MobileBook';
 
 const services = ['Wedding', 'Portrait Session', 'Maternity / Baby Shower', 'Family', 'Graduation', 'Corporate Event', 'Other'];
 
@@ -23,7 +24,8 @@ export default function Contact() {
 
   return (
     <section className="contact" id="contact">
-      <div className="contact-panel">
+      <div className="mobile-only"><MobileBook /></div>
+      <div className="contact-panel desktop-only">
         <div className="contact-info">
           <p className="kicker kicker-light">Contact &amp; booking</p>
           <h2>Let&apos;s create something <em>beautiful</em>.</h2>

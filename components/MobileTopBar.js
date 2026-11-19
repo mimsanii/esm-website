@@ -1,10 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { nav } from '@/lib/site';
-import { ArrowRight, Calendar, ChevronRight, Close, Dots } from './Icons';
+import { nav, waLink } from '@/lib/site';
+import { ArrowRight, Calendar, ChevronRight, Close, Menu, WhatsApp } from './Icons';
 
-// Phone & tablet top bar: logo + "•••" button that slides up the menu.
+// Phone & tablet top bar (Concept C): menu left, wordmark (or page title) centre, WhatsApp right.
 export default function MobileTopBar({ title }) {
   const [menu, setMenu] = useState(false);
 
@@ -15,10 +15,19 @@ export default function MobileTopBar({ title }) {
 
   return (
     <>
-      <div className="m-top m-in" style={{ '--d': 0 }}>
-        <Link href="/" className="m-logo"><img src="/logo.png" alt="Ecotop Silent Media" /></Link>
-        {title && <span className="m-top-title">{title}</span>}
-        <button className="m-dots" onClick={() => setMenu(true)} aria-label="Open menu"><Dots width="20" height="20" /></button>
+      <div className="c-top">
+        <button className="c-icon" onClick={() => setMenu(true)} aria-label="Open menu"><Menu width="22" height="22" /></button>
+        {title ? (
+          <span className="c-top-title">{title}</span>
+        ) : (
+          <Link href="/" className="c-wordmark" aria-label="Ecotop Silent Media home">
+            <span>ECOTOP</span>
+            <small>SILENT MEDIA</small>
+          </Link>
+        )}
+        <a className="c-icon c-icon-round" href={waLink('Hello ESM, I would like to make an enquiry.')} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+          <WhatsApp width="19" height="19" />
+        </a>
       </div>
 
       <div className={`m-sheet-bg ${menu ? 'open' : ''}`} onClick={() => setMenu(false)} />
@@ -35,7 +44,7 @@ export default function MobileTopBar({ title }) {
             </Link>
           ))}
         </div>
-        <Link href="/#contact" className="m-btn m-btn-dark m-sheet-cta" onClick={() => setMenu(false)}>
+        <Link href="/#contact" className="c-btn c-btn-red m-sheet-cta" onClick={() => setMenu(false)}>
           <Calendar width="18" height="18" /> Book a Session <ArrowRight width="16" height="16" />
         </Link>
       </div>

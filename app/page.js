@@ -1,6 +1,8 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import MobileHero from '@/components/MobileHero';
+import MobileExperience from '@/components/MobileExperience';
+import MobileTabBar from '@/components/MobileTabBar';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import FeaturedWork from '@/components/FeaturedWork';
@@ -24,6 +26,7 @@ export default function HomePage() {
       </div>
       <main>
         <Services />
+        <div className="mobile-only"><MobileExperience /></div>
         <About />
         <FeaturedWork />
         <Testimonials />
@@ -32,6 +35,7 @@ export default function HomePage() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <MobileTabBar />
     </>
   );
 }
